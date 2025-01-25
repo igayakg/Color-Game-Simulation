@@ -10,7 +10,7 @@ function simulate() {
     resultsTable.innerHTML = '';
 
     const sampleData = generateRoundsData();
-
+  
     sampleData.forEach(data => {
         const row = resultsTable.insertRow();
         row.insertCell(0).innerText = data.round;
