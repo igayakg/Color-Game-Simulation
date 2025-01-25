@@ -73,16 +73,13 @@ button:hover {
 table {
   width: 100%;
   border-collapse: collapse;
+  text-align: center;
 }
 
-table,
-th{
-  border: 1px solid #ccc;
-}
-
-th {
+th,
+td {
   padding: 10px;
-  text-align: left;
+  text-align: center;
 }
 
 th {
@@ -90,12 +87,4 @@ th {
   color: white;
   font-weight: bold;
   text-align: center;
-}
-
-td {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 10px;
-  padding-right: 10px;
-
 }
