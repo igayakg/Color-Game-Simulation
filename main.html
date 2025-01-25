@@ -12,44 +12,42 @@
     <div id="parent-container"> 
         <form id="bettingForm">
             <label for="initialMoney">💵 Initial Money:</label>
-            <input type="number" id="initialMoney" name="initialMoney"><br><br>
+            <input type="number" id="js-initial-money"><br><br>
 
             <label for="betRed">🔴 Bet for Red:</label>
-            <input type="number" id="betRed" name="betRed"><br><br>
 
-            <label for="betYellow">🟡 Bet for Yellow:</label>
-            <input type="number" id="betYellow" name="betYellow"><br><br>
-
-            <label for="betGreen">🟢 Bet for Green:</label>
-            <input type="number" id="betGreen" name="betGreen"><br><br>
-
-            <label for="minutesPerRound">🕒 Minutes/Round:</label>
-            <input type="number" id="minutesPerRound" name="minutesPerRound"><br><br>
+            <input type="number" id="js-bet-red"><br><br>
             
+            <label for="betYellow">🟡 Bet for Yellow:</label>
+            <input type="number" id="js-bet-yellow"><br><br>
+            
+            <label for="betGreen">🟢 Bet for Green:</label>
+            <input type="number" id="js-bet-green"><br><br>
+
             <label for="minutesPerRound">🕒 Minutes/Round:</label>
-            <input type="number" id="minutesPerRound" name="minutesPerRound"><br><br>
+          
+            <input type="number" id="js-minutes"><br><br>
 
             <button type="button" onclick="simulate()">Simulate</button>
         </form>
-        <div id="tableContainer">
-            <table id="resultsTable">
-                <thead>
-                    <tr>
-                        <th>ROUND</th>
-                        <th>SPIN</th>
-                        <th>RET</th>
-                        <th>RET</th>
-                        <th>RET</th>
-                        <th>OUTCOME</th>
-                        <th>BALANCE</th>
-                        <th>FINAL</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Rows will be added here dynamically -->
-                </tbody>
-            </table>
-        </div>
+        <table id="resultsTable">
+            <thead>
+                <tr>
+                    <th>ROUND</th>
+                    <th>SPIN</th>
+                    <th>Red</th>
+                    <th>Yellow</th>
+                    <th>Green</th>
+                    <th>OUTCOME</th>
+                    <th>BALANCE</th>
+                    <th>FINAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be added here dynamically -->
+            </tbody>
+        </table>
+
     </div>
 </body>
 </html>
