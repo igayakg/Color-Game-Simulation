@@ -1,10 +1,13 @@
+document.getElementById('js-bet-red').value = 0;
+document.getElementById('js-bet-yellow').value = 0;
+document.getElementById('js-bet-green').value = 0;
+document.getElementById('js-initial-money').value = 0;
+document.getElementById('js-minutes').value = 0;
+
+
 function simulate() {
     const resultsTable = document.getElementById('resultsTable').getElementsByTagName('tbody')[0];
-
-    // Clear existing rows
     resultsTable.innerHTML = '';
-
-    // Sample data
 
     const sampleData = generateRoundsData();
   
@@ -23,6 +26,15 @@ function simulate() {
 }
 
 function generateRoundsData() {
+    if(!isFieldsNumber()){
+        alert('Please enter a valid number');
+        return;
+    };
+    if(!isFieldsPositive()){
+        alert('Please enter a positive number');
+        return;
+    };
+
     const tempArray = [];
     
     const betRed = parseInt(document.getElementById('js-bet-red').value);
@@ -33,7 +45,7 @@ function generateRoundsData() {
     let initialBalance = parseInt(document.getElementById('js-initial-money').value);
     let finalBalance = initialBalance;
 
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= 10; i++) {
         const spinNum = getRandomNumber();
         const outcome = () => {
             let red = betRed;
@@ -105,3 +117,100 @@ function gameResults(randomNum) {
 }
 
 console.log(gameResults(7));
+
+function isFieldsNumber(){
+    const betRed = document.getElementById('js-bet-red');
+    const betYellow = document.getElementById('js-bet-yellow');
+    const betGreen = document.getElementById('js-bet-green');
+    const initialBalance = document.getElementById('js-initial-money');
+    const minutes = document.getElementById('js-minutes');
+    let flag = true;
+   
+   
+    if (isNaN(parseInt(betRed.value))){
+        betRed.style.border = '1px solid red';
+        flag = false;
+    } else {
+        betRed.style.border = '1px solid #ccc';
+    }
+    if (isNaN(parseInt(betYellow.value))){
+        betYellow.style.border = '1px solid red';
+        flag = false;
+    } else {
+        betYellow.style.border = '1px solid #ccc';
+    }
+    if (isNaN(parseInt(betGreen.value))){
+        betGreen.style.border = '1px solid red';
+        flag = false;
+    } else {    
+        betGreen.style.border = '1px solid #ccc';
+    }
+
+    if (isNaN(parseInt(initialBalance.value))){
+        initialBalance.style.border = '1px solid red';
+        flag = false;
+    } else {
+        initialBalance.style.border = '1px solid #ccc'; 
+    }
+
+    if (isNaN(parseInt(minutes.value))){
+        minutes.style.border = '1px solid red';
+        flag = false;
+    } else {
+        minutes.style.border = '1px solid #ccc';
+    }
+
+    if(!flag){
+        return false;
+    }
+    return true;
+}
+
+function isFieldsPositive() {
+    const betRedInput = document.getElementById('js-bet-red');
+    const betYellowInput = document.getElementById('js-bet-yellow');
+    const betGreenInput = document.getElementById('js-bet-green');
+    const initialBalanceInput = document.getElementById('js-initial-money');
+
+    const betRed = parseInt(betRedInput.value);
+    const betYellow = parseInt(betYellowInput.value);
+    const betGreen = parseInt(betGreenInput.value);
+    const initialBalance = parseInt(initialBalanceInput.value);
+
+    let flag = true;
+
+    if (betRed < 0) {
+        betRedInput.style.border = '1px solid red';
+        flag = false;
+    } else {
+        betRedInput.style.border = '1px solid #ccc';
+    }
+
+    if (betYellow < 0) {
+        betYellowInput.style.border = '1px solid red';
+        flag = false;
+    } else {
+        betYellowInput.style.border = '1px solid #ccc';
+    }
+
+    if (betGreen < 0) {
+        betGreenInput.style.border = '1px solid red';
+        flag = false;
+    } else {
+        betGreenInput.style.border = '1px solid #ccc';
+    }
+
+    if (initialBalance < 0) {
+        initialBalanceInput.style.border = '1px solid red';
+        flag = false;
+    } else {
+        initialBalanceInput.style.border = '1px solid #ccc';
+    }
+
+    if (!flag) {
+        return false;
+    }
+
+    return true;
+}
+
