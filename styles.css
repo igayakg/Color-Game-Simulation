@@ -72,13 +72,11 @@ table {
 }
 
 table,
-th,
-td {
+th{
   border: 1px solid #ccc;
 }
 
-th,
-td {
+th {
   padding: 10px;
   text-align: left;
 }
@@ -88,4 +86,12 @@ th {
   color: white;
   font-weight: bold;
   text-align: center;
+}
+
+td {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+
 }
