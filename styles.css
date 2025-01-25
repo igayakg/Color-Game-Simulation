@@ -73,6 +73,7 @@ button:hover {
 table {
   width: 100%;
   border-collapse: collapse;
+  text-align: center;
 }
 
 table,
@@ -93,7 +94,7 @@ th {
 }
 
 td {
-  padding-top: 0px;
+  padding-top: 10px;
   padding-bottom: 0px;
   padding-left: 10px;
   padding-right: 10px;
