@@ -88,3 +88,12 @@ th {
   font-weight: bold;
   text-align: center;
 }
+
+td {
+  padding-top: 10px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+}
+

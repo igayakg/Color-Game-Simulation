@@ -40,12 +40,26 @@ function generateRoundsData() {
     const betRed = parseInt(document.getElementById('js-bet-red').value);
     const betYellow = parseInt(document.getElementById('js-bet-yellow').value);
     const betGreen = parseInt(document.getElementById('js-bet-green').value);
-    const minutes = document.getElementById('js-minutes').value 
-    
+    const totalBet = betRed + betYellow + betGreen;
+
+    const minutes = parseInt(document.getElementById('js-minutes').value);
+    let totalMinutes = 0;
     let initialBalance = parseInt(document.getElementById('js-initial-money').value);
     let finalBalance = initialBalance;
+    let i = 1;
+    let isWinning = true;
 
-    for (let i = 1; i <= 10; i++) {
+    if (totalBet > initialBalance) {
+        alert(`Initial balance: ${initialBalance} should be greater than Total bet: ${totalBet}`);
+        return;
+    }
+    if(totalBet == 0){
+        alert('Total bet cannot be 0');
+        return;
+    }
+    
+    while(isWinning && i < 256) {
+        totalMinutes += minutes;
         const spinNum = getRandomNumber();
         const outcome = () => {
             let red = betRed;
@@ -77,6 +91,11 @@ function generateRoundsData() {
             final: finalBalance
         });
         initialBalance = finalBalance;
+        if (finalBalance <= 0){
+            isWinning = false;
+            alert(`You lost all your money in ${i} rounds. \nYou played for ${totalMinutes} minutes`);
+        }
+        i++;
     }
 
     return tempArray;
