@@ -26,12 +26,11 @@ function simulate() {
 }
 
 function generateRoundsData() {
-    if(!isFieldsNumber()){
-        alert('Please enter a valid number');
+    isFieldsNumber(); //sets field to 0 is NaN
+    if(!isMinutesZero()){
         return;
-    };
+    }
     if(!isFieldsPositive()){
-        alert('Please enter a positive number');
         return;
     };
 
@@ -142,47 +141,20 @@ function isFieldsNumber(){
     const betYellow = document.getElementById('js-bet-yellow');
     const betGreen = document.getElementById('js-bet-green');
     const initialBalance = document.getElementById('js-initial-money');
-    const minutes = document.getElementById('js-minutes');
-    let flag = true;
-   
+    const minutes = document.getElementById('js-minutes');   
    
     if (isNaN(parseInt(betRed.value))){
-        betRed.style.border = '1px solid red';
-        flag = false;
-    } else {
-        betRed.style.border = '1px solid #ccc';
-    }
+        document.getElementById('js-bet-red').value = 0;
+    } 
     if (isNaN(parseInt(betYellow.value))){
-        betYellow.style.border = '1px solid red';
-        flag = false;
-    } else {
-        betYellow.style.border = '1px solid #ccc';
-    }
+        document.getElementById('js-bet-yellow').value = 0;
+    } 
     if (isNaN(parseInt(betGreen.value))){
-        betGreen.style.border = '1px solid red';
-        flag = false;
-    } else {    
-        betGreen.style.border = '1px solid #ccc';
+        document.getElementById('js-bet-green').value = 0;
     }
-
     if (isNaN(parseInt(initialBalance.value))){
-        initialBalance.style.border = '1px solid red';
-        flag = false;
-    } else {
-        initialBalance.style.border = '1px solid #ccc'; 
+        document.getElementById('js-initial-money').value = 0;
     }
-
-    if (isNaN(parseInt(minutes.value))){
-        minutes.style.border = '1px solid red';
-        flag = false;
-    } else {
-        minutes.style.border = '1px solid #ccc';
-    }
-
-    if(!flag){
-        return false;
-    }
-    return true;
 }
 
 function isFieldsPositive() {
@@ -227,9 +199,32 @@ function isFieldsPositive() {
     }
 
     if (!flag) {
+        alert('Please enter a positive number');
         return false;
     }
 
     return true;
 }
 
+function isMinutesZero(){
+    const minutes = parseInt(document.getElementById('js-minutes').value);
+
+    const isNotPositive = () => {
+        if(minutes == 0){
+            return "Minutes cannot be 0.";
+        }
+        if(minutes < 0){
+            return 'Minutes cannot be negative.';
+        }
+        if(isNaN(minutes)){
+            return 'Minutes cannot be empty.';
+        }
+    }
+
+    if (minutes <= 0 || isNaN(minutes)) {
+        alert(`${isNotPositive()} Please enter a valid number.`);
+        return false;
+    }
+
+    return true;
+}
